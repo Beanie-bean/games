@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>AddPlatform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Add Platform</h1>
+    <div>
+        <form th:object="${platform}" th:action="@{saveplatform}" action="#" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{platformName}"/>
+            <input type="submit" value="Save"/>
+        </form>
+    </div>
+</body>
+</html>

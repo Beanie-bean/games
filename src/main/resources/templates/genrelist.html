@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>GenreList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <nav>
+        <a href=/gamelist>Games</a>
+        <a href=/platformlist>Platforms</a>
+        <a href=/genrelist>Genres</a>
+    </nav>
+    <h1>Genres</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr th:each = "genre: ${genres}">
+            <td th:text="${genre.genreName}"></td>
+            <td><a th:href="@{/deletegenre/{id}(id=${genre.genreId})}">
+                <button>Delete</button>
+            </a></td>
+            <td><a th:href="@{/editgenre/{id}(id=${genre.genreId})}">
+                <button>Edit</button>
+            </a></td>
+        </tr>
+    </table>
+    <a href=/addgenre>Add Genre</a>
+</body>
+</html>

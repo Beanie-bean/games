@@ -20,7 +20,15 @@
                         th:value="${platform.platformId}"
                         th:text="${platform.platformName}"></option>
             </select>
+
+            <label for="genreList">Genre</label>
+            <select id="genreList" th:field="*{genre}" class="form-control">
+                <option th:each="genre: ${genres}"
+                        th:value="${genre.genreId}"
+                        th:text="${genre.genreName}"></option>
+            </select>
             <input type="submit" value="Save"/>
+            <a href=/gamelist>Cancel</a>
         </form>
     </div>
 </body>

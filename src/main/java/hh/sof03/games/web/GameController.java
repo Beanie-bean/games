@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 import hh.sof03.games.domain.Game;
 import hh.sof03.games.domain.GameRepository;
+import hh.sof03.games.domain.GenreRepository;
 import hh.sof03.games.domain.PlatformRepository;
 
 @Controller
@@ -16,6 +17,9 @@ public class GameController {
 
     @Autowired
     private PlatformRepository platformRepository;
+
+    @Autowired
+    private GenreRepository genreRepository;
 
     @Autowired
     private GameRepository gameRepository;
@@ -30,6 +34,7 @@ public class GameController {
     public String addGame(Model model) {
         model.addAttribute("game", new Game());
         model.addAttribute("platforms", platformRepository.findAll());
+        model.addAttribute("genres", genreRepository.findAll());
         return "addgame";
     }
 
@@ -49,6 +54,7 @@ public class GameController {
     public String editGame(@PathVariable("id") Long id, Model model) {
         model.addAttribute("game", gameRepository.findById(id));
         model.addAttribute("platforms", platformRepository.findAll());
+        model.addAttribute("genres", genreRepository.findAll());
         return "editgame";
     }
 }

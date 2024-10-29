@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>AddGame</title>
+    <title>EditGame</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
@@ -21,6 +21,13 @@
                 <option th:each="platform: ${platforms}"
                         th:value="${platform.platformId}"
                         th:text="${platform.platformName}"></option>
+            </select>
+
+            <label for="genreList">Genre</label>
+            <select id="genreList" th:field="*{genre}" class="form-control">
+                <option th:each="genre: ${genres}"
+                        th:value="${genre.genreId}"
+                        th:text="${genre.genreName}"></option>
             </select>
             <input type="submit" value="Save"/>
         </form>

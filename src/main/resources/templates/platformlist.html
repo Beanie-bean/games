@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>GamesList</title>
+    <title>PlatfomList</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
@@ -12,28 +12,21 @@
         <a href=/platformlist>Platforms</a>
         <a href=/genrelist>Genres</a>
     </nav>
-    <h1>Games</h1>
+    <h1>Platforms</h1>
     <table>
         <tr>
             <th>Name</th>
-            <th>Release Year</th>
-            <th>Platform</th>
-            <th>Genre</th>
         </tr>
-        <tr th:each = "game: ${games}">
-            <td th:text="${game.name}"></td>
-            <td th:text="${game.releaseYear}"></td>
-            <td th:text="${game.platform.platformName}"></td>
-            <td th:text="${game.genre.genreName}"></td>
-            <td><a th:href="@{/deletegame/{id}(id=${game.id})}">
+        <tr th:each = "platform: ${platforms}">
+            <td th:text="${platform.platformName}"></td>
+            <td><a th:href="@{/deleteplatform/{id}(id=${platform.platformId})}">
                 <button>Delete</button>
             </a></td>
-            <td><a th:href="@{/editgame/{id}(id=${game.id})}">
+            <td><a th:href="@{/editplatform/{id}(id=${platform.platformId})}">
                 <button>Edit</button>
             </a></td>
         </tr>
     </table>
-    <a href=/addgame>Add Game</a>
     <a href=/addplatform>Add Platform</a>
 </body>
 </html>

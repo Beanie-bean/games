@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>AddGame</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Add Game</h1>
+    <div>
+        <form th:object="${game}" th:action="@{savegame}" action="#" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}"/>
+            <label for="releaseYear">Release Year</label>
+            <input type="text" id="releaseYear" th:field="*{releaseYear}"/>
+            <label for="platformList">Platform</label>
+            <select id="platformList" th:field="*{platform}" class="form-control">
+                <option th:each="platform: ${platforms}"
+                        th:value="${platform.platformId}"
+                        th:text="${platform.platformName}"></option>
+            </select>
+            <input type="submit" value="Save"/>
+        </form>
+    </div>
+</body>
+</html>

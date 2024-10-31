@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import hh.sof03.games.domain.AppUser;
+import hh.sof03.games.domain.AppUserRepository;
 import hh.sof03.games.domain.Game;
 import hh.sof03.games.domain.GameRepository;
 import hh.sof03.games.domain.Genre;
@@ -20,8 +22,12 @@ public class GamesApplication {
 	}
 
 	@Bean
-	public CommandLineRunner gameDemo(GameRepository gameRepository, PlatformRepository platformRepository, GenreRepository genreRepository) {
+	public CommandLineRunner gameDemo(GameRepository gameRepository, PlatformRepository platformRepository, GenreRepository genreRepository, AppUserRepository appUserRepository) {
 		return (args) -> {
+			AppUser user2 = new AppUser("Veera", "$2a$10$XryM6w04gkh6JPDM7ib.C.RRBxFbdT6RkgMvFcNRaUsxxXmU9pij6", "ADMIN");
+
+			appUserRepository.save(user2);
+
 			platformRepository.save(new Platform("PC"));
 			platformRepository.save(new Platform("Nintendo Switch"));
 

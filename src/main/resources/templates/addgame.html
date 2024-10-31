@@ -2,34 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>AddGame</title>
+    <title>Games</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 </head>
 
 <body>
-    <h1>Add Game</h1>
-    <div>
-        <form th:object="${game}" th:action="@{savegame}" action="#" method="post">
-            <label for="name">Name</label>
-            <input type="text" id="name" th:field="*{name}"/>
-            <label for="releaseYear">Release Year</label>
-            <input type="text" id="releaseYear" th:field="*{releaseYear}"/>
-            <label for="platformList">Platform</label>
-            <select id="platformList" th:field="*{platform}" class="form-control">
-                <option th:each="platform: ${platforms}"
-                        th:value="${platform.platformId}"
-                        th:text="${platform.platformName}"></option>
-            </select>
-
-            <label for="genreList">Genre</label>
-            <select id="genreList" th:field="*{genre}" class="form-control">
-                <option th:each="genre: ${genres}"
-                        th:value="${genre.genreId}"
-                        th:text="${genre.genreName}"></option>
-            </select>
-            <input type="submit" value="Save"/>
-            <a href=/gamelist>Cancel</a>
-        </form>
+    <div class="container text-center">
+        <h1 style="padding:15px 0">Add Game</h1>
+        <div style="width: 40%" class="container text-center">
+            <form th:object="${game}" th:action="@{savegame}" action="#" method="post">
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="name" th:field="*{name}" />
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="releaseYear" th:field="*{releaseYear}" />
+                    <label for="releaseYear">Release Year</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select style="width: 30%" id="platformList" th:field="*{platform}" class="form-control form-select">
+                        <option th:each="platform: ${platforms}" th:value="${platform.platformId}"
+                            th:text="${platform.platformName}"></option>
+                    </select>
+                    <label for="platformList">Platform</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select style="width: 30%" id="genreList" th:field="*{genre}" class="form-control form-select">
+                        <option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}">
+                        </option>
+                    </select>
+                    <label for="genreList">Genre</label>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Save" />
+                <a style="padding: 15px" type="button" class="btn" href=/gamelist>Cancel</a>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

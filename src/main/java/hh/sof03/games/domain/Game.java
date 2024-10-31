@@ -1,5 +1,6 @@
 package hh.sof03.games.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;

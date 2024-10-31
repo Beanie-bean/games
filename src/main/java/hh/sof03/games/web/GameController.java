@@ -1,6 +1,7 @@
 package hh.sof03.games.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class GameController {
     }
 
     @RequestMapping(value = "/addgame")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String addGame(Model model) {
         model.addAttribute("game", new Game());
         model.addAttribute("platforms", platformRepository.findAll());
@@ -45,12 +47,14 @@ public class GameController {
     }
 
     @RequestMapping(value = "/deletegame/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteGame(@PathVariable("id") Long id, Model model) {
         gameRepository.deleteById(id);
         return "redirect:/gamelist";
     }
 
     @RequestMapping(value = "/editgame/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String editGame(@PathVariable("id") Long id, Model model) {
         model.addAttribute("game", gameRepository.findById(id));
         model.addAttribute("platforms", platformRepository.findAll());

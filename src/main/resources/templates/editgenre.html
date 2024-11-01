@@ -4,18 +4,27 @@
 <head>
     <title>Games</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 </head>
 
 <body>
-    <h1>Edit Genre</h1>
-    <div>
-        <form th:object="${genre}" th:action="@{/savegenre}" action="#" method="post">
-            <label for="id"></label>
-            <input type="hidden" id="id" th:field="${genre.genreId}" readonly="readonly">
-            <label for="name">Name</label>
-            <input type="text" id="name" th:field="*{genreName}"/>
-            <input type="submit" value="Save"/>
-        </form>
+    <div class="container text-center">
+        <h1 style="padding:15px 0">Edit Genre</h1>
+        <div style="width: 40%" class="container text-center">
+            <form th:object="${genre}" th:action="@{/savegenre}" action="#" method="post">
+                <div class="form-floating mb-3">
+                    <input type="hidden" id="id" th:field="${genre.genreId}" readonly="readonly">
+                    <label for="id"></label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="name" th:field="*{genreName}" />
+                    <label for="name">Name</label>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Save" />
+                <a style="padding: 15px" type="button" class="btn" href=/genrelist>Cancel</a>
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

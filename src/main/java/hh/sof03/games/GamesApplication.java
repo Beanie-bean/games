@@ -30,13 +30,29 @@ public class GamesApplication {
 
 			platformRepository.save(new Platform("PC"));
 			platformRepository.save(new Platform("Nintendo Switch"));
+			platformRepository.save(new Platform("PlayStation 3"));
 
 			genreRepository.save(new Genre("Action"));
 			genreRepository.save(new Genre("Adventure"));
+			genreRepository.save(new Genre("Puzzle"));
+			genreRepository.save(new Genre("Simulation"));
+			genreRepository.save(new Genre("Story Rich"));
+			genreRepository.save(new Genre("Platform"));
 
 			gameRepository.save(new Game("Fallout 4", 2015, platformRepository.findByPlatformName("PC").get(0), genreRepository.findByGenreName("Action").get(0)));
 			gameRepository.save(new Game("Cyberpunk 2077", 2020, platformRepository.findByPlatformName("PC").get(0), genreRepository.findByGenreName("Action").get(0)));
 			gameRepository.save(new Game("The Legend of Zelda: Tears of the Kingdom", 2023, platformRepository.findByPlatformName("Nintendo Switch").get(0), genreRepository.findByGenreName("Adventure").get(0)));
+			gameRepository.save(new Game("Halo: The Master Chief Collection", 2019, platformRepository.findByPlatformName("PC").get(0), genreRepository.findByGenreName("Action").get(0)));
+			gameRepository.save(new Game("Detroit: Become Human", 2019, platformRepository.findByPlatformName("PC").get(0), genreRepository.findByGenreName("Story Rich").get(0)));
+			gameRepository.save(new Game("The Witness", 2016, platformRepository.findByPlatformName("PC").get(0), genreRepository.findByGenreName("Puzzle").get(0)));
+			gameRepository.save(new Game("Sims 4", 2014, platformRepository.findByPlatformName("PC").get(0), genreRepository.findByGenreName("Simulation").get(0)));
+			gameRepository.save(new Game("LittleBigPlanet", 2008, platformRepository.findByPlatformName("PlayStation 3").get(0), genreRepository.findByGenreName("Platform").get(0)));
+			gameRepository.save(new Game("Kirby and the Forgotten Land", 2022, platformRepository.findByPlatformName("Nintendo Switch").get(0), genreRepository.findByGenreName("Platform").get(0)));
+
+
+
+
+
 		};
 	}
 }

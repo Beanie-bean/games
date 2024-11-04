@@ -25,14 +25,14 @@
                     <label for="releaseYear">Release Year</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select style="width: 30%" id="platformList" th:field="*{platform}" class="form-control">
+                    <select style="width: 150px" id="platformList" th:field="*{platform}" class="form-control">
                         <option th:each="platform: ${platforms}" th:value="${platform.platformId}"
                             th:text="${platform.platformName}"></option>
                     </select>
                     <label for="platformList">Platform</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select style="width: 30%" id="genreList" th:field="*{genre}" class="form-control">
+                    <select style="width: 150px" id="genreList" th:field="*{genre}" class="form-control">
                         <option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}">
                         </option>
                     </select>

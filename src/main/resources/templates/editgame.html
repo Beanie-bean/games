@@ -7,7 +7,7 @@
     <div class="container text-center">
         <h1 style="padding:15px 0">Edit Game</h1>
         <div style="width: 40%" class="container text-center">
-            <form th:object="${game}" th:action="@{/savegame}" action="#" method="post">
+            <form th:object="${game}" th:action="@{/editgamesave}" action="#" method="post">
                 <div class="form-floating mb-3">
                     <input type="hidden" id="id" th:field="${game.id}" readonly="readonly">
                     <label for="id"></label>
@@ -23,14 +23,14 @@
                     <label for="releaseYear">Release Year</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select style="width: 150px" id="platformList" th:field="*{platform}" class="form-control">
+                    <select style="width: 150px" id="platformList" th:field="*{platform}" class="form-control form-select">
                         <option th:each="platform: ${platforms}" th:value="${platform.platformId}"
                             th:text="${platform.platformName}"></option>
                     </select>
                     <label for="platformList">Platform</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select style="width: 150px" id="genreList" th:field="*{genre}" class="form-control">
+                    <select style="width: 150px" id="genreList" th:field="*{genre}" class="form-control form-select">
                         <option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}">
                         </option>
                     </select>

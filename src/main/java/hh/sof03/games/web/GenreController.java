@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 
@@ -19,8 +21,9 @@ public class GenreController {
     private GenreRepository genreRepository;
 
     @RequestMapping(value="/genrelist")
-    public String genreList(Model model) {
+    public String genreList(Model model, HttpServletRequest request) {
         model.addAttribute("genres", genreRepository.findAll());
+        model.addAttribute("servletPath", request.getServletPath());
         return "genrelist";
     }
 

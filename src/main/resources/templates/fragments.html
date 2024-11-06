@@ -30,18 +30,18 @@
     </div>
 </div>
 
-<div th:fragment="navigation">
+<nav th:fragment="navigation">
     <div class="row">
         <ul class="nav nav-pills justify-content-center" style="padding:20px 0">
-            <li class="nav-item">
-                <a class="nav-link" href=/gamelist>Games</a>
+            <li>
+                <a class="nav-link" th:classappend="${servletPath == '/' || servletPath == '/gamelist' ? 'active':''}" href=/gamelist>Games</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href=/platformlist>Platforms</a>
+            <li>
+                <a class="nav-link" th:classappend="${servletPath == '/platformlist' ? 'active':''}" href=/platformlist>Platforms</a>            
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/genrelist">Genres</a>
+            <li>
+                <a class="nav-link" th:classappend="${servletPath == '/genrelist' ? 'active':''}" href=/genrelist>Genres</a>            
             </li>
         </ul>
     </div>
-</div>
+</nav>

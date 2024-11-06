@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 
@@ -19,8 +21,9 @@ public class PlatformController {
     private PlatformRepository platformRepository;
 
     @RequestMapping(value="/platformlist")
-    public String platformList(Model model) {
+    public String platformList(Model model, HttpServletRequest request) {
         model.addAttribute("platforms", platformRepository.findAll());
+        model.addAttribute("servletPath", request.getServletPath());
         return "platformlist";
     }
 

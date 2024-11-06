@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -23,12 +24,15 @@ public class Game {
     @NotNull(message = "Release Year is needed")
     private Integer releaseYear;
 
-    
+    @NotNull(message = "Platform is needed")
+    @Valid
     @ManyToOne
     @JsonIgnoreProperties("games")
     @JoinColumn(name = "platformId")
     private Platform platform;
 
+    @NotNull(message = "Genre is needed")
+    @Valid
     @ManyToOne
     @JsonIgnoreProperties("games")
     @JoinColumn(name = "genreId")

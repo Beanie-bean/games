@@ -10,12 +10,12 @@
             <form th:object="${game}" th:action="@{savegame}" action="#" method="post">
                 <div class="form-floating mb-3">
                     <input class="form-control" type="text" id="name" th:field="*{name}" />
-                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                    <div style="padding-top: 5px" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
                     <label for="name">Name</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" type="text" id="releaseYear" th:field="*{releaseYear}" />
-                    <div th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}"></div>
+                    <div style="padding-top: 5px" th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}"></div>
                     <label for="releaseYear">Release Year</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -23,6 +23,7 @@
                         <option th:each="platform: ${platforms}" th:value="${platform.platformId}"
                             th:text="${platform.platformName}"></option>
                     </select>
+                    <div style="padding-top: 5px" th:if="${#fields.hasErrors('platform')}" th:errors="*{platform}"></div>
                     <label for="platformList">Platform</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -30,6 +31,7 @@
                         <option th:each="genre: ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}">
                         </option>
                     </select>
+                    <div style="padding-top: 5px" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
                     <label for="genreList">Genre</label>
                 </div>
                 <input class="btn btn-primary" type="submit" value="Save" />

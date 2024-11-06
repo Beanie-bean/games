@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -16,12 +17,13 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotNull(message = "Name is needed")
-    @Size(max=60)
+    @NotBlank(message = "Name is needed")
+    @Size(max=100)
     private String name;
     @NotNull(message = "Release Year is needed")
     private Integer releaseYear;
 
+    
     @ManyToOne
     @JsonIgnoreProperties("games")
     @JoinColumn(name = "platformId")

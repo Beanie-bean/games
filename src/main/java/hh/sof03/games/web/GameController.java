@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 
 import hh.sof03.games.domain.Game;
 import hh.sof03.games.domain.GameRepository;
@@ -16,7 +15,6 @@ import hh.sof03.games.domain.GenreRepository;
 import hh.sof03.games.domain.PlatformRepository;
 import jakarta.validation.Valid;
 
-@Validated
 @Controller
 public class GameController {
 
@@ -47,7 +45,7 @@ public class GameController {
     @RequestMapping(value = "/savegame", method = RequestMethod.POST)
     public String saveGame(@Valid Game game, BindingResult result) {
         if (result.hasErrors()) {
-            return "error";
+            return "addgame";
         }
         gameRepository.save(game);
         return "redirect:gamelist";

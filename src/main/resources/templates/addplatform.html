@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Games</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
-</head>
+<head th:replace="fragments :: head"></head>
 
 <body>
     <div class="container text-center">
@@ -14,6 +10,7 @@
             <form th:object="${platform}" th:action="@{saveplatform}" action="#" method="post">
                 <div class="form-floating mb-2">
                     <input class="form-control" type="text" id="name" th:field="*{platformName}"/>
+                    <div th:if="${#fields.hasErrors('platformName')}" th:errors="*{platformName}"></div>
                     <label for="name">Name</label>
                 </div>
                 <input class="btn btn-primary" type="submit" value="Save" />

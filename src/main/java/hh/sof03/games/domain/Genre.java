@@ -10,12 +10,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Genre {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long genreId;
+    @NotBlank(message = "Name is needed")
+    @Size(max=100)
     private String genreName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre")

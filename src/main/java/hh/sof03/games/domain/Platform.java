@@ -10,12 +10,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Platform {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long platformId;
+    @NotBlank(message = "Name is needed")
+    @Size(max=100)
     private String platformName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "platform")

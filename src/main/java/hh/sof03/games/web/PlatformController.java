@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 import hh.sof03.games.domain.Platform;
 import hh.sof03.games.domain.PlatformRepository;
@@ -30,7 +32,10 @@ public class PlatformController {
     }
 
     @RequestMapping(value="/saveplatform", method = RequestMethod.POST)
-    public String savePlatform(Platform platform) {
+    public String savePlatform(@Valid Platform platform, BindingResult result) {
+        if (result.hasErrors()) {
+            return "addplatform";
+        }
         platformRepository.save(platform);
         return "redirect:/platformlist";
     }

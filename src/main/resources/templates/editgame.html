@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Games</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
-</head>
+<head th:replace="fragments :: head"></head>
 
 <body>
     <div class="container text-center">
@@ -18,10 +14,12 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" type="text" id="name" th:field="*{name}" />
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
                     <label for="name">Name</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" type="text" id="releaseYear" th:field="*{releaseYear}" />
+                    <div th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}"></div>
                     <label for="releaseYear">Release Year</label>
                 </div>
                 <div class="form-floating mb-3">

@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 import hh.sof03.games.domain.Genre;
 import hh.sof03.games.domain.GenreRepository;
@@ -30,7 +32,10 @@ public class GenreController {
     }
 
     @RequestMapping(value="/savegenre", method = RequestMethod.POST)
-    public String saveGenre(Genre genre) {
+    public String saveGenre(@Valid Genre genre, BindingResult result) {
+        if (result.hasErrors()) {
+            return "addgenre";
+        }
         genreRepository.save(genre);
         return "redirect:/genrelist";
     }

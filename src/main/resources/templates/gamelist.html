@@ -4,15 +4,16 @@
 <head th:replace="fragments :: head"></head>
 
 <body>
+    <div th:replace="fragments :: language"></div>
     <div class="container text-center">
         <div th:replace="fragments :: header"></div>
         <div th:replace="fragments :: navigation"></div>
         <table class="table table-striped">
             <tr>
-                <th>Name</th>
-                <th>Release Year</th>
-                <th>Platform</th>
-                <th>Genre</th>
+                <th th:text="#{name}"></th>
+                <th th:text="#{game.year}"></th>
+                <th th:text="#{game.platform}"></th>
+                <th th:text="#{game.genre}"></th>
             </tr>
             <tr th:each="game: ${games}">
                 <td style="width: 35%" th:text="${game.name}"></td>
@@ -21,14 +22,14 @@
                 <td th:text="${game.genre.genreName}"></td>
                 <td style="width: 10px" sec:authorize="isAuthenticated()"><a
                         th:href="@{/deletegame/{id}(id=${game.id})}">
-                        <button>Delete</button>
+                        <button th:text="#{delete}"></button>
                     </a></td>
                 <td style="width: 10px" sec:authorize="isAuthenticated()">
-                    <a th:href="@{/editgame/{id}(id=${game.id})}"><button>Edit</button></a>
+                    <a th:href="@{/editgame/{id}(id=${game.id})}"><button th:text="#{edit}"></button></a>
                 </td>
             </tr>
         </table>
-        <a type="button" class="btn btn-primary" sec:authorize="isAuthenticated()" href=/addgame>Add Game</a>
+        <a type="button" class="btn btn-primary" sec:authorize="isAuthenticated()" th:text="#{add.game}" href=/addgame></a>
     </div>
 </body>
 

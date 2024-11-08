@@ -5,16 +5,16 @@
 
 <body>
     <div class="container text-center">
-        <h1 style="padding:15px 0">Add Genre</h1>
+        <h1 style="padding:15px 0">[[#{genre.name}]]</h1>
         <div style="width: 40%" class="container text-center">
             <form th:object="${genre}" th:action="@{savegenre}" action="#" method="post">
                 <div class="form-floating mb-2">
                     <input class="form-control" type="text" id="name" th:field="*{genreName}" />
                     <div style="padding-top: 5px" th:if="${#fields.hasErrors('genreName')}" th:errors="*{genreName}"></div>
-                    <label for="name">Name</label>
+                    <label for="name">[[#{name}]]</label>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Save" />
-                <a style="padding: 15px" type="button" class="btn" href=/genrelist>Cancel</a>
+                <input class="btn btn-primary" type="submit" th:value="#{save}" />
+                <a style="padding: 15px" type="button" class="btn" href=/genrelist>[[#{cancel}]]</a>
             </form>
         </div>
     </div>

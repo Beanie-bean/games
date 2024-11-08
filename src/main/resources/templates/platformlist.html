@@ -4,28 +4,29 @@
 <head th:replace="fragments :: head"></head>
 
 <body>
+    <div th:replace="fragments :: language"></div>
     <div class="container text-center">
         <div th:replace="fragments :: header"></div>
         <div th:replace="fragments :: navigation"></div>
-        <div style="width: 40%" class="container text-center">
+        <div style="width: 50%" class="container text-center">
             <table class="table table-striped">
                 <tr>
-                    <th>Platform Name</th>
+                    <th>[[#{platform.name}]]</th>
                 </tr>
                 <tr th:each="platform: ${platforms}">
                     <td th:text="${platform.platformName}"></td>
                     <td style="width: 10px" sec:authorize="isAuthenticated()"><a
                             th:href="@{/deleteplatform/{id}(id=${platform.platformId})}">
-                            <button>Delete</button>
+                            <button>[[#{delete}]]</button>
                         </a></td>
                     <td style="width: 10px" sec:authorize="isAuthenticated()"><a
                             th:href="@{/editplatform/{id}(id=${platform.platformId})}">
-                            <button>Edit</button>
+                            <button>[[#{edit}]]</button>
                         </a></td>
                 </tr>
             </table>
         </div>
-        <a type="button" class="btn btn-primary" sec:authorize="isAuthenticated()" href=/addplatform>Add Platform</a>
+        <a type="button" class="btn btn-primary" sec:authorize="isAuthenticated()" href=/addplatform>[[#{add.platform}]]</a>
     </div>
 </body>
 

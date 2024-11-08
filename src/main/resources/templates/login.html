@@ -6,18 +6,16 @@
 <body>
     <div class="container">
         <div style="padding:20px 0" class="col-md-4 col-md-offset-4">
-            <div  class="alert alert-danger" th:if="${param.error}">
-                Invalid username and password.
+            <div  th:text="#{invalid.login}" class="alert alert-danger" th:if="${param.error}">
             </div>
-            <div class="alert alert-warning" th:if="${param.logout}">
-                You have been logged out.
+            <div th:text="#{logged.out}" class="alert alert-warning" th:if="${param.logout}">
             </div>
             <form th:action="@{/login}" method="post">
-                <div><label> User Name : <input type="text" name="username" class="form-control" /> </label></div>
-                <div><label> Password: <input type="password" name="password" class="form-control" /> </label></div>
-                <div style="padding:15px 0"><input type="submit" value="Sign In" class="btn btn-primary" /></div>
+                <div><label> [[#{login.username}]] <input type="text" name="username" class="form-control" /> </label></div>
+                <div><label> [[#{login.password}]] <input type="password" name="password" class="form-control" /> </label></div>
+                <div style="padding:15px 0"><input type="submit" th:value="#{signin}" class="btn btn-primary" /></div>
             </form>
-            <a class="btn btn-outline-primary" type="button" href=/gamelist>View website</a>
+            <a class="btn btn-outline-primary" type="button" href=/gamelist>[[#{view.website}]]</a>
         </div>
     </div>
 </body>

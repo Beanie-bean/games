@@ -2,30 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="head">
-    <title>Games</title>
+    <title>[[#{website.title}]]</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
 </head>
 
+<div th:fragment="language">
+    <button class="btn" type="button" th:text="#{switch-en}" onclick="window.location.href='http://localhost:8080/?locale=en'"></button>
+    <button class="btn" type="button" th:text="#{switch-fi}" onclick="window.location.href='http://localhost:8080/?locale=fi'"></button>    
+</div>
+
 <div th:fragment="header">
     <div class="row">
         <div class="col-2" style="padding-top:15px">
-            <h1>Games</h1>
+            <h1>[[#{page.title}]]</h1>
         </div>
         <div class="col-8" style="padding-top: 25px">
             <div sec:authorize="isAuthenticated()">
-                <h4>Welcome <span sec:authentication="name"></span></h4>
+                <h4>[[#{welcome}]] <span sec:authentication="name"></span></h4>
             </div>
         </div>
         <div class="col-1" style="padding-top: 5px">
             <div sec:authorize="isAuthenticated()" style="padding:20px 0">
                 <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+                    <input type="submit" th:value="#{signout}" class="btn btn-sm btn-danger" />
                 </form>
             </div>
         </div>
         <div class="col-1" style="padding-top: 20px">
-            <a type="button" class="btn btn-primary" sec:authorize="!isAuthenticated()" href=/login>Sign In</a>
+            <a type="button" th:text="#{signin}" class="btn btn-primary" sec:authorize="!isAuthenticated()" href=/login></a>
         </div>
     </div>
 </div>
@@ -34,13 +39,13 @@
     <div class="row">
         <ul class="nav nav-pills justify-content-center" style="padding:20px 0">
             <li>
-                <a class="nav-link" th:classappend="${servletPath == '/' || servletPath == '/gamelist' ? 'active':''}" href=/gamelist>Games</a>
+                <a th:text="#{games}" class="nav-link" th:classappend="${servletPath == '/' || servletPath == '/gamelist' ? 'active':''}" href=/gamelist></a>
             </li>
             <li>
-                <a class="nav-link" th:classappend="${servletPath == '/platformlist' ? 'active':''}" href=/platformlist>Platforms</a>            
+                <a th:text="#{platforms}" class="nav-link" th:classappend="${servletPath == '/platformlist' ? 'active':''}" href=/platformlist></a>            
             </li>
             <li>
-                <a class="nav-link" th:classappend="${servletPath == '/genrelist' ? 'active':''}" href=/genrelist>Genres</a>            
+                <a th:text="#{genres}" class="nav-link" th:classappend="${servletPath == '/genrelist' ? 'active':''}" href=/genrelist></a>            
             </li>
         </ul>
     </div>

@@ -4,30 +4,31 @@
 <head th:replace="fragments :: head"></head>
 
 <body>
+    <div th:replace="fragments :: language"></div>
     <div class="container text-center">
         <div th:replace="fragments :: header"></div>
         <div th:replace="fragments :: navigation"></div>
-        <div style="width: 40%" class="container text-center">
+        <div style="width: 50%" class="container text-center">
             <table class="table table-striped">
                 <tr>
-                    <th>Genre Name</th>
+                    <th>[[#{genre.name}]]</th>
                 </tr>
                 <tr th:each="genre: ${genres}">
                     <td th:text="${genre.genreName}"></td>
                     <td style="width: 10px" sec:authorize="isAuthenticated()">
                         <a th:href="@{/deletegenre/{id}(id=${genre.genreId})}">
-                            <button>Delete</button>
+                            <button>[[#{delete}]]</button>
                         </a>
                     </td>
                     <td style="width: 10px" sec:authorize="isAuthenticated()">
                         <a th:href="@{/editgenre/{id}(id=${genre.genreId})}">
-                            <button>Edit</button>
+                            <button>[[#{edit}]]</button>
                         </a>
                     </td>
                 </tr>
             </table>
         </div>
-        <a type="button" class="btn btn-primary" sec:authorize="isAuthenticated()" href=/addgenre>Add Genre</a>
+        <a type="button" class="btn btn-primary" sec:authorize="isAuthenticated()" href=/addgenre>[[#{add.genre}]]</a>
     </div>
 </body>
 

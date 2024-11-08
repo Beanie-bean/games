@@ -5,18 +5,18 @@
 
 <body>
     <div class="container text-center">
-        <h1 style="padding:15px 0">Add Game</h1>
+        <h1 style="padding:15px 0">[[#{add.game}]]</h1>
         <div style="width: 40%" class="container text-center">
             <form th:object="${game}" th:action="@{savegame}" action="#" method="post">
                 <div class="form-floating mb-3">
                     <input class="form-control" type="text" id="name" th:field="*{name}" />
                     <div style="padding-top: 5px" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
-                    <label for="name">Name</label>
+                    <label for="name">[[#{name}]]</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input class="form-control" type="text" id="releaseYear" th:field="*{releaseYear}" />
                     <div style="padding-top: 5px" th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}"></div>
-                    <label for="releaseYear">Release Year</label>
+                    <label for="releaseYear">[[#{game.year}]]</label>
                 </div>
                 <div class="form-floating mb-3">
                     <select style="width: 150px" id="platformList" th:field="*{platform}" class="form-control form-select">
@@ -24,7 +24,7 @@
                             th:text="${platform.platformName}"></option>
                     </select>
                     <div style="padding-top: 5px" th:if="${#fields.hasErrors('platform')}" th:errors="*{platform}"></div>
-                    <label for="platformList">Platform</label>
+                    <label for="platformList">[[#{game.platform}]]</label>
                 </div>
                 <div class="form-floating mb-3">
                     <select style="width: 150px" id="genreList" th:field="*{genre}" class="form-control form-select">
@@ -32,10 +32,10 @@
                         </option>
                     </select>
                     <div style="padding-top: 5px" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
-                    <label for="genreList">Genre</label>
+                    <label for="genreList">[[#{game.genre}]]</label>
                 </div>
-                <input class="btn btn-primary" type="submit" value="Save" />
-                <a style="padding: 15px" type="button" class="btn" href=/gamelist>Cancel</a>
+                <input class="btn btn-primary" type="submit" th:value="#{save}" />
+                <a style="padding: 15px" type="button" class="btn" href=/gamelist>[[#{cancel}]]</a>
             </form>
         </div>
     </div>

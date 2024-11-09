@@ -14,6 +14,7 @@ import hh.sof03.games.domain.Game;
 import hh.sof03.games.domain.GameRepository;
 import hh.sof03.games.domain.GenreRepository;
 import hh.sof03.games.domain.PlatformRepository;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
@@ -30,9 +31,11 @@ public class GameController {
     private GameRepository gameRepository;
 
     @RequestMapping(value = { "*", "/gamelist" })
-    public String getGames(Model model, HttpServletRequest request) {
+    public String getGames(Model model, HttpServletRequest request, ServletContext servletContext) {
         model.addAttribute("games", gameRepository.findAll());
         model.addAttribute("servletPath", request.getServletPath());
+        model.addAttribute("servletContext", request.getContextPath());
+
         return "gamelist";
     }
 
